@@ -56,9 +56,17 @@ function App() {
       <Header onNavigate={setCurrentPage} currentPage={currentPage} />
 
       {/* Hero Section */}
-      <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 lg:px-0 pt-16">
+      <section 
+        className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 lg:px-0 pt-16"
+        style={{
+          backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=800')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
         {/* Main Heading */}
-        <div className="flex flex-col items-center max-w-4xl mx-auto mb-16">
+        <div className="flex flex-col items-center max-w-4xl mx-auto mb-16 relative z-10">
           {/* Main heading with blur effects */}
           <div className="flex flex-wrap justify-center items-center gap-x-2 gap-y-4 mb-12">
             {words.map((word, index) => (
@@ -83,73 +91,6 @@ function App() {
             onStartBuilding={handleStartBuilding}
             onLearnMore={handleLearnMore}
           />
-        </div>
-
-        {/* Hero Image */}
-        <div className="relative w-full max-w-6xl mx-auto mb-32">
-          <div className="rotated-image">
-            <img
-              src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&h=800"
-              alt="Linear app interface showing inbox and issue management"
-              className="w-full h-auto rounded-xl border border-border-light shadow-2xl"
-            />
-          </div>
-
-          {/* Gradient overlay */}
-          <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
-        </div>
-      </section>
-
-      {/* Simple Feature Section */}
-      <section className="relative w-full py-32 bg-gradient-to-b from-white/5 to-transparent">
-        <div className="max-w-6xl mx-auto px-6 lg:px-0">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-8">
-              <h2 className="text-text-main text-5xl font-semibold leading-tight tracking-tight">
-                AI 기반 스마트 매칭
-              </h2>
-
-              <p className="text-text-muted text-lg leading-relaxed max-w-sm">
-                최첨단 AI 기술로 요양보호사와 이용자를 완벽하게 매칭하여 최고의 돌봄 서비스를 제공합니다.
-              </p>
-
-              <div className="flex items-center gap-2 text-primary hover:text-primary-dark transition-colors cursor-pointer">
-                <span className="font-semibold">지금 시작하기</span>
-                <ArrowRight className="w-4 h-4" />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-gray-50 p-6 rounded-xl border border-primary/20 hover:border-primary/40 transition-all hover:shadow-lg">
-                <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center mb-3">
-                  <span className="text-white text-sm">🤖</span>
-                </div>
-                <h3 className="text-text-main font-semibold mb-2">AI 매칭</h3>
-                <p className="text-text-muted text-sm">정확한 AI 분석으로 최적의 매칭</p>
-              </div>
-              <div className="bg-gray-50 p-6 rounded-xl border border-primary/20 hover:border-primary/40 transition-all hover:shadow-lg">
-                <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center mb-3">
-                  <span className="text-white text-sm">⚡</span>
-                </div>
-                <h3 className="text-text-main font-semibold mb-2">빠른 연결</h3>
-                <p className="text-text-muted text-sm">실시간으로 빠른 매칭 서비스</p>
-              </div>
-              <div className="bg-gray-50 p-6 rounded-xl border border-primary/20 hover:border-primary/40 transition-all hover:shadow-lg">
-                <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center mb-3">
-                  <span className="text-white text-sm">🛡️</span>
-                </div>
-                <h3 className="text-text-main font-semibold mb-2">안전 보장</h3>
-                <p className="text-text-muted text-sm">검증된 전문가들과 안전한 서비스</p>
-              </div>
-              <div className="bg-gray-50 p-6 rounded-xl border border-primary/20 hover:border-primary/40 transition-all hover:shadow-lg">
-                <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary-dark rounded-lg flex items-center justify-center mb-3">
-                  <span className="text-white text-sm">💝</span>
-                </div>
-                <h3 className="text-text-main font-semibold mb-2">맞춤 케어</h3>
-                <p className="text-text-muted text-sm">개인별 맞춤형 돌봄 서비스</p>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
