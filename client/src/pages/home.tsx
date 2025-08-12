@@ -1,6 +1,11 @@
 import { BlurredText } from "@/components/BlurredText";
 import { CTAButtons } from "@/components/CTAButtons";
 import { CompanyLogos } from "@/components/CompanyLogos";
+import { FeatureCards } from "@/components/FeatureCards";
+import { ProjectManagement } from "@/components/ProjectManagement";
+import { AISection } from "@/components/AISection";
+import { Footer } from "@/components/Footer";
+import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   const handleStartBuilding = () => {
@@ -9,6 +14,14 @@ export default function Home() {
 
   const handleLearnMore = () => {
     console.log('Learn More clicked - Navigate to agents feature page');
+  };
+
+  const handleContactSales = () => {
+    console.log('Contact Sales clicked');
+  };
+
+  const handleGetStarted = () => {
+    console.log('Get Started clicked');
   };
 
   const words = [
@@ -62,6 +75,9 @@ export default function Home() {
         </div>
       </section>
       
+      {/* Gradient Transition */}
+      <div className="w-full h-64 bg-gradient-to-b from-transparent to-dark-bg"></div>
+      
       {/* Company Logos Section */}
       <section className="relative w-full py-24">
         <div className="max-w-4xl mx-auto px-6 lg:px-0">
@@ -76,6 +92,73 @@ export default function Home() {
           <CompanyLogos />
         </div>
       </section>
+
+      {/* Made for Modern Product Teams Section */}
+      <section className="relative w-full py-32 bg-gradient-to-b from-white/5 to-transparent">
+        <div className="max-w-6xl mx-auto px-6 lg:px-0">
+          <div className="grid lg:grid-cols-2 gap-16 items-center mb-32">
+            <div className="space-y-8">
+              <h2 className="text-light-text text-5xl font-semibold leading-tight tracking-tight">
+                Made for modern product teams
+              </h2>
+              
+              <p className="text-muted-text text-lg leading-relaxed max-w-sm">
+                Linear is shaped by the practices and principles that distinguish world-class product teams from the rest. Relentless focus, fast execution, and a commitment to the quality of craft.
+              </p>
+
+              <div className="flex items-center gap-2 text-light-text hover:text-gray-300 transition-colors cursor-pointer">
+                <span className="font-semibold">Make the switch</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </div>
+
+            <div>
+              <FeatureCards />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Project Management Section */}
+      <section className="relative w-full py-32 bg-gradient-to-b from-white/5 to-transparent">
+        <div className="px-6 lg:px-0">
+          <ProjectManagement />
+        </div>
+      </section>
+
+      {/* AI Section */}
+      <section className="relative w-full py-32 bg-gradient-to-b from-white/5 to-transparent">
+        <div className="px-6 lg:px-0">
+          <AISection />
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="relative w-full py-32">
+        <div className="max-w-6xl mx-auto px-6 lg:px-0 text-center">
+          <h2 className="text-light-text text-4xl font-semibold mb-8 tracking-tight">
+            Plan the present, build the future
+          </h2>
+          
+          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
+            <button 
+              onClick={handleContactSales}
+              className="bg-[#28282c] border border-[#3e3e44] text-light-text px-6 py-3 rounded-xl font-semibold hover:bg-[#32323a] transition-all duration-200"
+            >
+              Contact Sales
+            </button>
+            <button 
+              onClick={handleGetStarted}
+              className="bg-gray-200 text-dark-bg px-6 py-3 rounded-xl font-semibold shadow-lg hover:bg-white transition-all duration-200"
+            >
+              Get Started
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

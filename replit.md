@@ -1,6 +1,6 @@
 # Overview
 
-This is a modern full-stack web application built with React and Express, designed to recreate a Linear-inspired interface with a focus on project management and product development tools. The application features a sophisticated dark-themed UI with blur effects and modern design patterns, implementing a complete frontend-backend architecture with PostgreSQL database integration.
+This is a pixel-perfect React implementation of a Linear-inspired landing page, designed from comprehensive Figma specifications. The application features a sophisticated dark-themed UI with extensive blur effects, modern typography, and multiple product showcase sections. Built with modern web technologies and optimized for performance, it delivers a complete marketing website experience that matches the original Linear design system.
 
 # User Preferences
 
@@ -9,13 +9,24 @@ Preferred communication style: Simple, everyday language.
 # System Architecture
 
 ## Frontend Architecture
-The client is built using React 18 with TypeScript and follows a component-based architecture:
+The client is built using React 18 with TypeScript following a component-based architecture:
 - **UI Framework**: Uses shadcn/ui components built on top of Radix UI primitives for accessibility and customization
-- **Styling**: Tailwind CSS with custom CSS variables for theming, supporting both light and dark modes
+- **Styling**: Tailwind CSS with custom CSS variables implementing Linear's design system with dark theme (#08090a background)
+- **Typography**: Roboto font family with precise font sizes, letter spacing, and line heights matching Figma specifications
 - **State Management**: TanStack Query (React Query) for server state management with custom query client configuration
 - **Routing**: Wouter for lightweight client-side routing
 - **Build Tool**: Vite for fast development and optimized production builds
-- **Component Structure**: Organized into reusable UI components, page components, and custom hooks
+- **Component Structure**: Organized into specialized components for each landing page section with blur effects and animations
+
+## Landing Page Sections
+- **Hero Section**: Large heading with individual word blur effects, subtitle, and dual CTA buttons
+- **Company Logos**: Grid of trusted company logos with hover animations and grayscale effects
+- **Feature Cards**: Three showcase cards with rounded corners, background images, and glassmorphism effects
+- **Product Features**: "Made for Modern Product Teams" section with feature highlights
+- **Project Management**: "Set the Product Direction" with interactive project overview cards and status indicators
+- **AI Integration**: "AI that works where you work" featuring agent selection interface
+- **Final CTA**: "Plan the present, build the future" call-to-action section
+- **Footer**: Comprehensive site navigation with multiple link sections
 
 ## Backend Architecture
 The server follows an Express.js-based REST API pattern:
@@ -32,11 +43,13 @@ The server follows an Express.js-based REST API pattern:
 - **Migrations**: Drizzle-kit for database migrations and schema synchronization
 - **Validation**: Zod integration with Drizzle for runtime type validation
 
-## Authentication & Authorization
-Basic user management system is scaffolded with:
-- User schema with username/password fields
-- Storage interface methods for user CRUD operations
-- Session management preparation (connect-pg-simple dependency included)
+## Design System Implementation
+- **Colors**: Dark theme with #08090a primary background, #f7f8f8 light text, and opacity variations for secondary elements
+- **Typography**: Roboto font with specific weights (400, 600) and precise letter spacing (-1.82px for hero, -0.252px for subheadings)
+- **Blur Effects**: Extensive use of blur filters and glassmorphism with backdrop-blur and opacity layers
+- **Animations**: Smooth transitions, hover effects, and transform animations for interactive elements
+- **Spacing**: Consistent padding, margins, and grid layouts following the Figma specification
+- **Components**: Modular components for BlurredText, FeatureCards, ProjectManagement, AISection, and Footer
 
 ## Development Workflow
 - **Type Safety**: Shared TypeScript configurations and types between client and server
