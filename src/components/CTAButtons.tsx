@@ -12,7 +12,7 @@ export function CTAButtons({ onStartBuilding, onLearnMore }: CTAButtonsProps) {
       <div className="relative">
         <div className="absolute inset-0 blur-sm opacity-50 pointer-events-none">
           <button className="bg-primary text-white px-6 py-3 rounded-xl font-semibold text-sm shadow-lg">
-            Start Building
+            Start Elby
           </button>
         </div>
         <button

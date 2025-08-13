@@ -7,12 +7,21 @@ import FacilitiesPage from "./pages/FacilitiesPage";
 import JobsPage from "./pages/JobsPage";
 import CommunityPageSimple from "./pages/CommunityPageSimple";
 import HealthAssessmentPage from "./pages/HealthAssessmentPage";
+import ChatPage from "./pages/ChatPage";
+import StartPage from "./pages/StartPage";
+
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [initialPrompt, setInitialPrompt] = useState<string | undefined>(undefined);
 
   const handleStartBuilding = () => {
-    console.log('Start Building clicked');
+    setCurrentPage('start');
+  };
+
+  const handleStartChat = (prompt?: string) => {
+    setInitialPrompt(prompt);
+    setCurrentPage('chat');
   };
 
   const handleLearnMore = () => {
@@ -44,6 +53,14 @@ function App() {
         return <CommunityPageSimple />;
       case 'health-assessment':
         return <HealthAssessmentPage />;
+      case 'start':
+        return <StartPage onStartChat={handleStartChat} onGoHome={() => setCurrentPage('home')} />;
+      case 'chat':
+        return <ChatPage 
+          onGoHome={() => setCurrentPage('start')} 
+          onGoMainPage={() => setCurrentPage('home')}
+          initialPrompt={initialPrompt} 
+        />;
       default:
         return <HomePage />;
     }
@@ -263,7 +280,9 @@ function App() {
 
   return (
     <div className="min-h-screen w-full bg-white">
-      <Header onNavigate={setCurrentPage} currentPage={currentPage} />
+      {currentPage !== 'chat' && currentPage !== 'start' && (
+        <Header onNavigate={setCurrentPage} currentPage={currentPage} />
+      )}
       {renderPage()}
     </div>
   );
