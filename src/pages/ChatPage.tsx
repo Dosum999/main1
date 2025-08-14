@@ -31,10 +31,11 @@ interface Coordinator {
 interface ChatPageProps {
   onGoHome?: () => void;
   onGoMainPage?: () => void;
+  onGoLogin?: () => void;
   initialPrompt?: string;
 }
 
-export default function ChatPage({ onGoHome, onGoMainPage, initialPrompt }: ChatPageProps) {
+export default function ChatPage({ onGoHome, onGoMainPage, onGoLogin, initialPrompt }: ChatPageProps) {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputMessage, setInputMessage] = useState("");
@@ -62,7 +63,7 @@ export default function ChatPage({ onGoHome, onGoMainPage, initialPrompt }: Chat
 
   const menuItems = [
     { icon: <HelpCircle className="w-4 h-4" />, text: "도움말", action: () => {} },
-    { icon: <LogIn className="w-4 h-4" />, text: "로그인", action: () => {} },
+    { icon: <LogIn className="w-4 h-4" />, text: "로그인", action: onGoLogin || (() => {}) },
     { icon: <ExternalLink className="w-4 h-4" />, text: "Elderberry로 이동", action: onGoMainPage || (() => {}) },
   ];
 

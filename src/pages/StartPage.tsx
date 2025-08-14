@@ -6,23 +6,26 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "../components/ui/tooltip";
-import { ExternalLink, HelpCircle, LogIn, Plus, Send, PanelLeftClose, PanelLeftOpen } from "lucide-react";
+import { ExternalLink, HelpCircle, LogIn, Plus, Send, PanelLeftClose, PanelLeftOpen, UserPlus } from "lucide-react";
 import React, { useState } from "react";
 
 interface StartPageProps {
   onStartChat: (prompt?: string) => void;
   onGoHome: () => void;
+  onGoLogin?: () => void;
+  onGoSignup?: () => void;
 }
 
-export default function StartPage({ onStartChat, onGoHome }: StartPageProps) {
+export default function StartPage({ onStartChat, onGoHome, onGoLogin, onGoSignup }: StartPageProps) {
   // Sidebar collapse state
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [inputMessage, setInputMessage] = useState("");
 
   // Data for sidebar menu items
   const menuItems = [
-    { icon: <HelpCircle className="w-4 h-4" />, text: "도움말", action: () => {} },
-    { icon: <LogIn className="w-4 h-4" />, text: "로그인", action: () => {} },
+    { icon: <HelpCircle className="w-4 h-4" />, text: "도움말", action: () => { } },
+    { icon: <LogIn className="w-4 h-4" />, text: "로그인", action: onGoLogin || (() => { }) },
+    { icon: <UserPlus className="w-4 h-4" />, text: "회원가입", action: onGoSignup || (() => { }) },
     { icon: <ExternalLink className="w-4 h-4" />, text: "Elderberry로 이동", action: onGoHome },
   ];
 
@@ -48,18 +51,17 @@ export default function StartPage({ onStartChat, onGoHome }: StartPageProps) {
   return (
     <div className="flex h-screen items-start bg-white">
       {/* Sidebar */}
-      <aside className={`hidden sm:flex flex-col h-full items-start py-[15px] sm:py-[20px] md:py-[30px] bg-white border-r border-[#e8e8e8] transition-all duration-300 ${
-        isSidebarCollapsed 
-          ? 'w-[60px] px-2' 
-          : 'w-[180px] sm:w-[220px] md:w-[260px] pl-2 sm:pl-4 md:pl-6 pr-2 sm:pr-4 md:pr-[25px]'
-      }`}>
+      <aside className={`hidden sm:flex flex-col h-full items-start py-[15px] sm:py-[20px] md:py-[30px] bg-white border-r border-[#e8e8e8] transition-all duration-300 ${isSidebarCollapsed
+        ? 'w-[60px] px-2'
+        : 'w-[180px] sm:w-[220px] md:w-[260px] pl-2 sm:pl-4 md:pl-6 pr-2 sm:pr-4 md:pr-[25px]'
+        }`}>
         {/* Header */}
         <div className={`flex flex-col gap-5 pb-5 w-full ${isSidebarCollapsed ? 'items-center' : 'items-start'}`}>
           <div className={`flex items-center w-full ${isSidebarCollapsed ? 'justify-center' : 'justify-between'}`}>
             {!isSidebarCollapsed && (
               <div className="flex flex-col w-[132px] h-[26px] items-start">
                 <div className="flex items-center">
-                  <button 
+                  <button
                     onClick={onGoHome}
                     className="font-bold text-lg text-primary hover:text-primary-dark transition-colors"
                   >
@@ -132,8 +134,8 @@ export default function StartPage({ onStartChat, onGoHome }: StartPageProps) {
                 {item.text === "로그인" && (
                   <TooltipProvider>
                     <Tooltip>
-                      <TooltipTrigger asChild>
-                        <div className="relative"></div>
+                      <TooltipTrigger>
+                        <div className="relative w-2 h-2"></div>
                       </TooltipTrigger>
                       <TooltipContent
                         side="right"

@@ -56,10 +56,16 @@ export function Header({ onNavigate, currentPage = 'home' }: HeaderProps) {
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-3">
-            <button className="text-text-muted hover:text-text-main transition-colors duration-200 text-sm font-medium px-3 py-2 rounded-lg hover:bg-gray-100">
+            <button 
+              onClick={() => onNavigate?.('login')}
+              className="text-text-muted hover:text-text-main transition-colors duration-200 text-sm font-medium px-3 py-2 rounded-lg hover:bg-gray-100"
+            >
               Log in
             </button>
-            <button className="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 shadow-sm">
+            <button 
+              onClick={() => onNavigate?.('signup')}
+              className="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 shadow-sm"
+            >
               Sign up
             </button>
           </div>
@@ -93,10 +99,16 @@ export function Header({ onNavigate, currentPage = 'home' }: HeaderProps) {
                 </button>
               ))}
               <div className="flex flex-col space-y-2 px-3 pt-4">
-                <button className="text-left text-text-muted hover:text-text-main transition-colors duration-200 text-sm font-medium">
+                <button 
+                  onClick={() => onNavigate?.('login')}
+                  className="text-left text-text-muted hover:text-text-main transition-colors duration-200 text-sm font-medium"
+                >
                   Log in
                 </button>
-                <button className="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg font-medium text-sm transition-colors duration-200 text-left">
+                <button 
+                  onClick={() => onNavigate?.('signup')}
+                  className="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg font-medium text-sm transition-colors duration-200 text-left"
+                >
                   Sign up
                 </button>
               </div>
